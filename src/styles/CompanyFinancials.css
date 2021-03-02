@@ -1,0 +1,41 @@
+/* CompanyFinancials.css */
+
+.generalPage {
+    top: 65px; /* Header Height */
+    bottom: 20px;
+    height: 100%;
+    /* font-family: 'Courier New', Courier, monospace; */
+}
+
+.generalGrid2 {
+    background-color: #bfd7ea;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 25px !important;
+}
+  
+.gridItem {
+    margin: 10px;
+}
+
+.pageHeader {
+    /* font-family: 'Courier New', Courier, monospace; */
+}
+
+
+.MuiTableCell-root {
+    /* font-family: 'Courier New', Courier, monospace !important; */
+}
+
+.financials-companySearch {
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.04);;
+    border-radius: 5px;
+    height: 125px;
+}
+
+.financials-companySearch-container {
+    margin-top: 75px;
+}

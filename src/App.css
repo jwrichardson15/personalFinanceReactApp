@@ -1,0 +1,246 @@
+.App {
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+    min-height: 1092px;
+}
+
+.mainToolbar {
+  background-color: #20232a;
+}
+
+.toolbar-user {
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;
+  font-size: 16px !important;
+  color: rgb(235, 235, 235) !important;
+  position: absolute;
+  right: 150px;
+}
+
+.toolbar-button-parent {
+  position: absolute;
+  right: 50px;
+  color: rgb(235, 235, 235) !important;
+}
+
+.toolbar-items {
+  width: 100%;
+}
+
+.toolbar-btn {
+  color: #d5dae0 !important;
+}
+
+.toolbar-child {
+  width: 15%;
+  float: left;
+  color: rgb(235, 235, 235) !important;
+}
+
+.generalPage {
+  top: 65px; /* Header Height */
+  bottom: 20px;
+  height: 100%;
+}
+
+.gridParent {
+  width: 100%;
+}
+
+.generalBody {
+  margin: auto !important;
+  width: 50% !important;
+  background-color: rgb(92, 175, 175);
+  color: #000000;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.bodyItem {
+  margin: auto !important;
+  text-align: left;
+  /* width: 30%; */
+}
+
+.summaryItem {
+  margin: auto !important;
+  margin-bottom: 50px !important;
+  width: 350px;
+  height: 250px;
+  text-align: left;
+  background-color: rgb(92, 175, 175);
+  color: #000000;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.generalGrid {
+  margin: auto !important;
+  margin-top: 0px !important;
+  width: 62% !important;
+  background-color: #bfd7ea;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.leftSideGrid {
+  /* margin: auto !important; */
+  margin-left: 25px !important;
+  width: 12% !important;
+  height: 500px;
+  background-color: #839788;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.rightSideGrid {
+  /* margin: auto !important; */
+  margin-right: 25px !important;
+  width: 17% !important;
+  background-color: #baa898;
+  border-radius: 10px;
+  padding: 10px;
+  height: 300px;
+}
+
+.companySearch-research {
+    margin: auto;
+    width: 300px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.04);;
+    /* border-radius: 5px; */
+    height: 125px;
+}
+
+.tickerInput {
+  margin-top: 10px !important;
+  width: 150px;
+}
+
+.tickerSearchBtn {
+  width: 75px !important;
+  margin: 10px !important;
+}
+
+.rightSideGrid-watchList {
+  /* margin: auto !important; */
+  margin-right: 25px !important;
+  /* width: 17% !important; */
+  float:right;
+  width: 22%;
+  text-align: center;
+  margin-top: 70px;
+  background-color: rgba(0, 0, 0, 0.04);;
+  border-radius: 5px;
+  height: 175px;
+}
+
+.rightSideGrid-watchList-header {
+  line-height: 52px;
+  text-align: center;
+  background-color: #20232a !important;
+  color: white !important;
+  height: 52px;
+}
+
+.pageHeader {
+  text-align: center;
+  color: #20232a !important;
+}
+
+.navBar-parent{
+  margin-top: 65px;
+  width: 200px;
+  text-align: center;
+}
+
+.navbar-list-item {
+  justify-content: center !important;
+}
+
+.navbar-group-header {
+  height: 20px;
+  text-align: left;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  padding: 10px 0 2px 25px !important;
+  color: #20232a !important;
+  /* background-color: #baa898; */
+  text-decoration: none !important; 
+}
+
+.navbar-tab {
+  height: 20px;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  font-size: 16px !important;
+  line-height: 18px !important;
+  text-align: left;
+  padding-bottom: 2px !important;
+  color: #ffffff !important;
+  text-decoration: none !important; 
+}
+
+.MuiList-padding {
+  padding-top: 0 !important;
+}
+
+.MuiDrawer-paper {
+  margin-top: 125px;
+  margin-left: 25px;
+  border-radius: 15px;
+  width: 200px;
+  height: 400px !important;
+  text-align: center;
+
+  /* background-color: #222222 !important; */
+}
+
+.perm-nav-bar {
+  float: left;
+  width: 12%;
+  /* background-color: #919191; */
+  border-right: 1px solid #20232a;
+  height: 100vh;
+}
+
+.perm-non-nav {
+  float: right;
+  width: 87%;
+}
+
+.perm-whole-page {
+  display: block;
+  height: 100%;
+}
+
+.yahoo-btn:hover {
+  background-color: #79cc76 !important;
+}
+
+.yahoo-btn-watchlist {
+  margin: 10px !important;
+  width: 100px;
+}
+
+.form-error {
+  color: red;
+  text-align: lcft;
+  font-weight: 400 !important;
+  letter-spacing: 0.04em !important;
+  font-size: 14px !important;
+  height: 25px !important;
+
+}
+
+.MuiListItem-root:hover {
+  background-color: #79cc76 !important;
+}
+
+.generalGrid-container {
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+}
