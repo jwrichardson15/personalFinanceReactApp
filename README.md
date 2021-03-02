@@ -8,13 +8,15 @@ Setup a personal firebase account at the following url: https://firebase.google.
 
 Request the Firebase API key and save as `REACT_APP_FIREBASE_API_KEY` within a .env file.
 
-Request permission from jwrichardson15 to create a login account. 
+Request permission from jwrichardson15 to create a login account. Currently this application only supports one account, with many users.
 
-# Setup APIs
+# API and Configuration
 
 Navigate to RAPID API and create an account at the following url: https://rapidapi.com/
 
-Obtain an API key and save save as `REACT_APP_RAPID_API_KEY` within the .env file.
+Obtain an API key and save as `REACT_APP_RAPID_API_KEY` within the .env file.
+
+Create a Twitter Profile and List, or navigate to a public list of your choosing. Add your username as `REACT_APP_TWITTER_USERNAME` and the list id (found in the url) as `REACT_APP_TWITTER_LIST_ID`. This live twitter feed will be displayed on your investing summary page.
 
 
 # Create React App
