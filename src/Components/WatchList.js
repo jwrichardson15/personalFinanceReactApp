@@ -63,7 +63,7 @@ class WatchList extends React.Component {
                   <StyledTableRow key={row.ticker}>
                     <TableCell align="right">{row.ticker}</TableCell>
                     <TableCell align="right">{row.currentPrice}</TableCell>
-                    <TableCell align="right">{row.dailyChange}</TableCell>
+                    <TableCell align="right" style={row.dailyChange.includes("-") ? {color: 'red'} : {color: 'green'}}>{row.dailyChange}</TableCell>
                     <TableCell align="right">{row.dailyRange}</TableCell>
                     <TableCell align="right">{row.marketCap}</TableCell>
                     <TableCell align="right">

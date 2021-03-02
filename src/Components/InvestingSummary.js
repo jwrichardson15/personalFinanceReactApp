@@ -54,6 +54,7 @@ class InvestingSummary extends React.Component {
                 <Grid container spacing={1} className="gridParent">
                     <Grid item xs={3}>
                         <div className="generalGrid-container" style={{margin: '0 10px 0 20px'}}>
+                            <div style={{textAlign: 'center', color: '#ffffff', backgroundColor: '#20232a', padding: '15px 0 5px 0', fontWeight: 'bold', fontSize: '1.2em'}}>Watch list</div>
                             {watchList.length != 0 ?    
                                 <TableContainer className="portfolio-table-container">
                                     <Table aria-label="simple table">
@@ -69,7 +70,7 @@ class InvestingSummary extends React.Component {
                                             <StyledTableRow key={row.ticker}>
                                             <TableCell align="right">{row.ticker}</TableCell>
                                             <TableCell align="right">{row.marketPrice}</TableCell>
-                                            <TableCell align="right">{row.dailyChange}</TableCell>
+                                            <TableCell align="right" style={row.dailyChange.includes("-") ? {color: 'red'} : {color: 'green'}}>{row.dailyChange}</TableCell>
                                             </StyledTableRow>
                                         ))}
                                         </TableBody>
@@ -82,6 +83,7 @@ class InvestingSummary extends React.Component {
                     </Grid>
                     <Grid item xs={6}>
                         <div className="generalGrid-container" style={{margin: '0 10px 0 10px'}}>
+                            <div style={{textAlign: 'center', color: '#ffffff', backgroundColor: '#20232a', padding: '15px 0 5px 0', fontWeight: 'bold', fontSize: '1.2em'}}>Portfolio</div>
                             <TableContainer className="portfolio-table-container">
                                 <Table aria-label="simple table">
                                     <TableHead>
@@ -111,6 +113,7 @@ class InvestingSummary extends React.Component {
                     <Grid item xs={3}>
                         <div style={{margin: '0 20px 0 10px'}}>
                             <TwitterWidget/>
+                            <LoadingSpinner/>
                         </div>
                     </Grid>
                 </Grid>

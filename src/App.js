@@ -20,9 +20,9 @@ function App( {signInWithGoogle, signOut, user} ) {
       <div>
         <Router>
           <Toolbar className="mainToolbar">
-            <div style={{width: '100%'}}>
+            <div style={{width: '100%', display: 'block'}}>
               <div style={{float: 'left', width:'82%'}}>
-                <div style={{width: '600px', marginLeft: '40%', paddingTop: '10px'}}>
+                <div style={{marginLeft: '40%', paddingTop: '10px'}}>
                   <div style={{float: 'left', width:'150px'}}>
                   <Link to="/finance" className="navbar-tab">Summary</Link>
                   </div>
@@ -37,17 +37,19 @@ function App( {signInWithGoogle, signOut, user} ) {
                   </div>
                 </div>
               </div>
-              <div className="navbar-tab" style={{float: 'left', width:'12%', paddingTop: '10px', color: '#d5dae0'}}>
-                {user.displayName}
-              </div>
-              <div className="toolbar-btn" style={{float: 'left', width: '80px'}}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => signOut()}
-                >
-                  LOGOUT
-                </Button>
+              <div style={{float: 'right', width: '18%', minWidth: '250px'}}>
+                <div className="navbar-tab" style={{float: 'left', paddingTop: '10px', color: '#d5dae0'}}>
+                  {user.displayName}
+                </div>
+                <div className="toolbar-btn" style={{float: 'right', width: '80px'}}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => signOut()}
+                  >
+                    LOGOUT
+                  </Button>
+                </div>
               </div>
             </div>
           </Toolbar>

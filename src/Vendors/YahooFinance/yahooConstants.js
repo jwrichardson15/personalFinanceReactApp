@@ -6,7 +6,7 @@ export const urls = {
 
 export const shortWatchListHeaders = ['Ticker', 'Price', '% Change'];
 export const watchListHeaders = ['Ticker', 'Market Price', 'Daily Change %', 'Daily Range', 'Market Cap'];
-export const portfolioHeaders = ['Ticker', 'Share Quantity', 'Market Price', 'Daily Change %', 'Cost Basis', 'P/L'];
+export const portfolioHeaders = ['Ticker', 'Share Quantity', 'Market Price', 'Daily Change $', 'Cost Basis', 'P/L'];
 export const researchMetricHeaders = ['Earnings Growth', 'Current Price/Share', 'EBITDA', 'Debt/Equity', 'Profit Margin', 'Total Cash', 'Total Debt', 'Total Revenue', 'Revenue Growth', 'Revenue/Share'];
 export const researchSummaryHeaders = ['Enterprise Value', 'EV/EBITDA', 'Beta', 'Book Value', '% Insiders', '% Institutions', 'Shares Outstanding', 'Float Shares', 'Shares Short', 'Short Ratio'];
 

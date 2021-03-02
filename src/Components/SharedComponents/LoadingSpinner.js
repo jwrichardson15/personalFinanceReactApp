@@ -13,7 +13,7 @@ class LoadingSpinner extends React.Component {
         height={75}
         width={75}
         style={{textAlign: 'center', marginTop: '3em'}}
-        timeout={3000} //3 secs
+        timeout={2000} //2 seconds
       />
     );
   }

@@ -15,6 +15,12 @@ import yahooConstants from '../Vendors/YahooFinance/yahooConstants.js';
 
 class CompanyFinancials extends React.Component {
 
+  constructor(props) {
+    super(props);
+    // TODO use this to create loading state or replace with a hook
+    this.state = {loading: false};
+  }
+
   render() {
     const {
       researchCompany
@@ -23,11 +29,18 @@ class CompanyFinancials extends React.Component {
   let ticker;
   let financialData;
   let keyStats;
+  let priceInfo;
+  let dayPositive = true
 
   if (Object.keys(researchCompany != 0)) {
     ticker = researchCompany.symbol;
     financialData = researchCompany.financialData
     keyStats = researchCompany.defaultKeyStatistics
+    priceInfo = researchCompany.price
+
+    if (researchCompany.price && researchCompany.price.regularMarketChange.raw < 0) {
+      dayPositive = false
+    }
   }
 
   return (
@@ -37,6 +50,14 @@ class CompanyFinancials extends React.Component {
       <div style={{marginLeft: '5%', marginBottom: '50px', marginTop: '-20px'}}>
         <div style={{float: 'left', width:'77%'}}>
           <h2 className="pageHeader" style={{marginLeft: '26%'}}>{`${ticker} Financials`}</h2>
+            <div style={{marginLeft: '57%', display: 'block', fontSize: '1.2em', fontWeight: 'bold'}}>
+              <div style={{float: 'left'}}>{` $${priceInfo.regularMarketPrice.fmt}`}</div>
+              {dayPositive ?
+              <div style={{float: 'left', paddingLeft: '15px', color: 'green'}}>{priceInfo.regularMarketChangePercent.fmt}</div>
+              :
+              <div style={{float: 'left', paddingLeft: '15px', color: 'red'}}>{priceInfo.regularMarketChangePercent.fmt}</div>
+              }
+            </div>
         </div>
         <div style={{float: 'right', width: '20%', marginRight: '3%', minWidth: '275px'}}>
           <div style={{textAlign: 'center'}}>

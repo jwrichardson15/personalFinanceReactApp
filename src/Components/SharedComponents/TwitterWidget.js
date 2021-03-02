@@ -7,8 +7,8 @@ class TwitterWidget extends React.Component{
             <Timeline
                 dataSource={{
                     sourceType: 'list',
-                    screenName: `${process.env.TWITTER_USERNAME}`,
-                    id: `${process.env.TWITTER_LIST_ID}`
+                    screenName: `${process.env.REACT_APP_TWITTER_USERNAME}`,
+                    id: `${process.env.REACT_APP_TWITTER_LIST_ID}`
                 }}
                 options={{
                     height: '700',
