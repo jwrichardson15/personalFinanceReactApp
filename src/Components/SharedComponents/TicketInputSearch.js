@@ -66,10 +66,6 @@ function validateTicker(values) {
     errors.tickerInput = 'Invalid Ticker, Try Again';
   }
 
-  // if(Object.keys(errors!= 0)) {
-  //   setSubmitting(false)
-  // }
-
   return errors;
 }
 

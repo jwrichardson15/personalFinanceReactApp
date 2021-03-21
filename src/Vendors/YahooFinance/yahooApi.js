@@ -1,26 +1,18 @@
+import yahooConstants from './yahooConstants.js';
 
-// TODO Major cleanup for these api calls; create a general purpose function
+const headers = { 
+    "x-rapidapi-key": `${process.env.REACT_APP_RAPID_API_KEY}`,
+    "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+    "useQueryString": true
+};
 
-export async function callYahooApi(url, ticker) {
-
-    console.error(url)
-    console.error(ticker)
+const sendYahooRequest = (query, url) => {
     let stockInfo;
-
     var unirest = require("unirest");
+    var req = unirest("GET", url);
 
-    var req = unirest("GET", "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-statistics");
-
-    req.query({
-        "symbol": ticker,
-        "region": "US"
-    });
-
-    req.headers({
-        "x-rapidapi-key": `${process.env.REACT_APP_RAPID_API_KEY}`,
-        "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-        "useQueryString": true
-    });
+    req.query(query);
+    req.headers(headers);
 
 
     return new Promise(function(resolve, reject) {
@@ -38,46 +30,30 @@ export async function callYahooApi(url, ticker) {
     })
 }
 
-export async function callYahooApiMarket(url, count) {
+export async function getYahooStockStats(ticker) {
 
-    console.error(url)
-    let stockInfo;
+    let stockStatsQuery = {
+        "symbol": ticker,
+        "region": "US"
+    }
 
-    var unirest = require("unirest");
+    return sendYahooRequest(stockStatsQuery, yahooConstants.urls.getStockInfo())
+}
 
-    var req = unirest("GET", url);
+export async function getYahooMarketMovers(count) {
 
-    req.query({
+    let stockStatsQuery = {
         "region": "US",
         "lang": "en-US",
         "start": "0",
         "count": count
-    });
+    }
 
-    req.headers({
-        "x-rapidapi-key": `${process.env.REACT_APP_RAPID_API_KEY}`,
-        "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-        "useQueryString": true
-    });
-
-
-    return new Promise(function(resolve, reject) {
-        req.end(function (res) {
-            if (!res.error) {
-                console.log('Yahoo Response')
-                console.log(res);
-        
-                stockInfo = res.body;
-                resolve(res.body);
-            } else {
-                reject();
-            }
-        });
-    })
+    return sendYahooRequest(stockStatsQuery, yahooConstants.urls.getMarketMovers())
 }
 
 
 export default {
-    callYahooApi,
-    callYahooApiMarket
+    getYahooStockStats,
+    getYahooMarketMovers
 }

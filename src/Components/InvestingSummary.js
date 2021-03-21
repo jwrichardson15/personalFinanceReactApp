@@ -54,12 +54,12 @@ class InvestingSummary extends React.Component {
                 <Grid container spacing={1} className="gridParent">
                     <Grid item xs={3}>
                         <div className="generalGrid-container" style={{margin: '0 10px 0 20px'}}>
-                            <div style={{textAlign: 'center', color: '#ffffff', backgroundColor: '#20232a', padding: '15px 0 5px 0', fontWeight: 'bold', fontSize: '1.2em'}}>Watch list</div>
+                            <div style={{textAlign: 'center', color: '#ffffff', backgroundColor: '#292F33', padding: '15px 0 5px 0', fontWeight: 'bold', fontSize: '1.2em'}}>Watch list</div>
                             {watchList.length != 0 ?    
                                 <TableContainer className="portfolio-table-container">
                                     <Table aria-label="simple table">
                                         <TableHead>
-                                        <TableRow style={{backgroundColor: '#20232a'}}>
+                                        <TableRow style={{backgroundColor: '#292F33'}}>
                                             <TableCell style={{color: '#ffffff'}} align="right">{yahooConstants.shortWatchListHeaders[0]}</TableCell>
                                             <TableCell style={{color: '#ffffff'}} align="right">{yahooConstants.shortWatchListHeaders[1]}</TableCell>
                                             <TableCell style={{color: '#ffffff'}} align="right">{yahooConstants.shortWatchListHeaders[2]}</TableCell>
@@ -83,11 +83,11 @@ class InvestingSummary extends React.Component {
                     </Grid>
                     <Grid item xs={6}>
                         <div className="generalGrid-container" style={{margin: '0 10px 0 10px'}}>
-                            <div style={{textAlign: 'center', color: '#ffffff', backgroundColor: '#20232a', padding: '15px 0 5px 0', fontWeight: 'bold', fontSize: '1.2em'}}>Portfolio</div>
+                            <div style={{textAlign: 'center', color: '#ffffff', backgroundColor: '#292F33', padding: '15px 0 5px 0', fontWeight: 'bold', fontSize: '1.2em'}}>Portfolio</div>
                             <TableContainer className="portfolio-table-container">
                                 <Table aria-label="simple table">
                                     <TableHead>
-                                    <TableRow style={{backgroundColor: '#20232a'}}>
+                                    <TableRow style={{backgroundColor: '#292F33'}}>
                                         <TableCell style={{color: '#ffffff'}} align="right">{yahooConstants.portfolioHeaders[0]}</TableCell>
                                         <TableCell style={{color: '#ffffff'}} align="right">{yahooConstants.portfolioHeaders[1]}</TableCell>
                                         <TableCell style={{color: '#ffffff'}} align="right">{yahooConstants.portfolioHeaders[2]}</TableCell>

@@ -49,7 +49,7 @@ class WatchList extends React.Component {
             <TableContainer className="workout-table-container">
             <Table aria-label="simple table" style={{borderRadius: '5px'}}>
               <TableHead>
-                <TableRow style={{backgroundColor: '#20232a'}}>
+                <TableRow style={{backgroundColor: '#292F33'}}>
                   <TableCell style={{color: '#ffffff'}} align="right">{yahooConstants.watchListHeaders[0]}</TableCell>
                   <TableCell style={{color: '#ffffff'}} align="right">{yahooConstants.watchListHeaders[1]}</TableCell>
                   <TableCell style={{color: '#ffffff'}}  align="right">{yahooConstants.watchListHeaders[2]}</TableCell>

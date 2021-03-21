@@ -9,9 +9,12 @@ import firebaseConfig from './firebaseConfig.js';
     googleProvider: new firebase.auth.GoogleAuthProvider(),
   };
 
+  const FieldValue = firebase.firestore.FieldValue;
+
 
   export {
       firebaseApp,
       providers,
-      firebaseAppAuth
+      firebaseAppAuth,
+      FieldValue
   }

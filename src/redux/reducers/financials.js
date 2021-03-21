@@ -1,6 +1,7 @@
 import TYPES from "../actionTypes";
 
 const initialState = {
+  user: {},
   researchCompany: {},
   watchList: [],
   portfolio: [],
@@ -9,6 +10,12 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case TYPES.SET_USER: {
+      return {
+        ...state,
+        user: action.payload
+      };
+    }
     case TYPES.SET_RESEARCH_COMPANY: {
       return {
         ...state,

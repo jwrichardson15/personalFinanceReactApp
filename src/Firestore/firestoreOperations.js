@@ -1,45 +1,36 @@
 // import firebase from './Firestore.js';
-import { firebaseApp } from './firebaseSetup.js';
+import { firebaseApp, FieldValue } from './firebaseSetup.js';
 
-
-const addToWatchList = companyData => {   
+const addToWatchList = (companyData, userEmail) => {
     let quoteData = companyData.quoteData[companyData.symbol]
-
     const db = firebaseApp.firestore();
-    const userRef = db.collection('watchlist').add({
-        ticker: companyData.symbol,
-        marketPrice: quoteData.regularMarketPrice.fmt,
-        dailyChange: quoteData.regularMarketChangePercent.fmt,
-        dailyRange: quoteData.regularMarketDayRange.fmt,
-        marketCap: quoteData.marketCap.fmt
+
+    const docRef = db.collection(userEmail).doc("watchlist").update({
+        [companyData.symbol] : {
+            ticker: companyData.symbol,
+            marketPrice: quoteData.regularMarketPrice.fmt,
+            dailyChange: quoteData.regularMarketChangePercent.fmt,
+            dailyRange: quoteData.regularMarketDayRange.fmt,
+            marketCap: quoteData.marketCap.fmt
+        }
     })
     
-    return userRef
+    return docRef
 }
 
-// const getWatchList = companyData => {   
-//     let formattedWatchList = [];
-
-//     const db = firebase.firestore();
-//     const response = db.collection("watchlist").get().then((data) => {
-//         data.forEach((doc) => {
-//             // doc.data() is never undefined for query doc snapshots
-//             console.log(doc.id, " => ", doc.data());
-//             formattedWatchList.push(doc.data())
-//         });
-//         return formattedWatchList
-//     })
-// }
-
-const getWatchList = () => {   
+const getWatchList = (userEmail) => {   
     const db = firebaseApp.firestore();
-    const userRef = db.collection("watchlist").get();
-    return userRef;
+    const docRef = db.collection(userEmail).doc('watchlist').get()
+
+    return docRef;
 }
 
-const deleteFromWatchList = (removedDocId) => {   
+const deleteFromWatchList = (ticker, userEmail) => {   
     const db = firebaseApp.firestore();
-    const userRef = db.collection("watchlist").doc(removedDocId).delete().then((data) => {
+    const userRef = db.collection(userEmail).doc('watchlist').update({
+        [ticker]: FieldValue.delete()
+
+    }).then((data) => {
         console.log("Document successfully deleted!");
     }).catch((error) => {
         console.error("Error removing document: ", error);
@@ -48,28 +39,11 @@ const deleteFromWatchList = (removedDocId) => {
     return userRef
 }
 
-const getPortfolio = () => {   
+const getPortfolio = (userEmail) => {   
     const db = firebaseApp.firestore();
-    const userRef = db.collection("portfolio").get();
-    return userRef;
+    const docRef = db.collection(userEmail).doc('portfolio').get()
+    return docRef;
 }
-
-// const addToFirestore = (type, body) => {
-
-//     // let payload = new Map();
-//     // body.forEach(field => {
-//     //         payload[field] = field
-//     // });
-
-//     const db = firebaseApp.firestore();
-//     db.settings({
-//     timestampsInSnapshots: true
-//     });
-//     const userRef = db.collection(type).add({
-//         //TODO add map here
-//     })
-// }
-
 
 
 export default {

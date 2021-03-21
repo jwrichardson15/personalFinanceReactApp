@@ -1,13 +1,17 @@
 import actions from './actions.js';
-import { callYahooApi, callYahooApiMarket } from '../Vendors/YahooFinance/yahooApi.js';
-import yahooConstants from '../Vendors/YahooFinance/yahooConstants.js';
+import { getYahooStockStats, getYahooMarketMovers } from '../Vendors/YahooFinance/yahooApi.js';
 import firestoreOperations from '../Firestore/firestoreOperations.js';
+import each from 'lodash/each';
+
+const setUserFromAuth = user => {
+    return(dispatch, getState) => {
+        dispatch(actions.setUser(user));
+    }
+}
 
 const getAndSetResearchCompany = ticker => {        
     return (dispatch, getState) => {
-        callYahooApi(yahooConstants.urls.getStockInfo(), ticker).then((response) => {
-            console.log('yahoo API response')
-            console.log(response)
+        getYahooStockStats(ticker).then((response) => {
             dispatch(actions.setResearchCompany(response));
         })
     }
@@ -15,10 +19,15 @@ const getAndSetResearchCompany = ticker => {
 
 const addToWatchList = ticker => {
     return (dispatch, getState) => {
-        callYahooApi(yahooConstants.urls.getStockInfo(), ticker).then((yahooResponse) => {
-            firestoreOperations.addToWatchList(yahooResponse).then((storeResponse) =>{
-                dispatch(setWatchListFromDatabase());
-            });
+        getYahooStockStats(ticker).then((yahooResponse) => {
+            let user = getState().financials.user
+            if (user){
+                firestoreOperations.addToWatchList(yahooResponse, user.email).then((storeResponse) =>{
+                    dispatch(setWatchListFromDatabase());
+                });
+            } else {
+                console.error("Error loading user info from store")
+            }
         })
     }
 }
@@ -27,13 +36,21 @@ const setWatchListFromDatabase = () => {
     return (dispatch, getState) => {
 
         let formattedWatchList = [];
+        let user = getState().financials.user
 
-        firestoreOperations.getWatchList().then((data) => {
-            data.forEach((doc) => {
-                formattedWatchList.push(doc.data())
+        if(user){
+            firestoreOperations.getWatchList(user.email).then((doc) => {
+                if (doc.exists) {
+                    let data = doc.data()
+
+                    each(Object.keys(data), (key, index) => {
+                        formattedWatchList.push(data[key]);
+                    });
+
+                    dispatch(actions.setWatchlistFromDatabase(formattedWatchList));
+                }
             });
-            dispatch(actions.setWatchlistFromDatabase(formattedWatchList));
-        });
+        }
     }
 }
 
@@ -41,24 +58,27 @@ const removeFromWatchList = ticker => {
     return (dispatch, getState) => {
 
         let updatedWatchList = [];
-        let removedDocId = '';
+        let user = getState().financials.user
 
-        const response = firestoreOperations.getWatchList().then((data) => {
-            data.forEach((doc) => {
-                console.log(doc.id, " => ", doc.data());
-                let company = doc.data();
-                if (company['ticker'] == ticker) {
-                    removedDocId = doc.id
-                } else {
-                    updatedWatchList.push(doc.data())
+        if (user) {    
+            const response = firestoreOperations.getWatchList(user.email).then((doc) => {
+                if (doc.exists) {
+                    let data = doc.data()
+
+                    each(Object.keys(data), (key, index) => {
+                        if (key != ticker) {
+                            updatedWatchList.push(data[key]);
+                        }
+                    });
+
+                    dispatch(actions.setWatchlistFromDatabase(updatedWatchList));
                 }
 
-            });
-  
-            dispatch(actions.setWatchlistFromDatabase(updatedWatchList));
-
-            firestoreOperations.deleteFromWatchList(removedDocId);
-        })
+                firestoreOperations.deleteFromWatchList(ticker, user.email);
+            })
+        } else {
+            console.error("Error loading user info from store")
+        } 
     }
 }
 
@@ -67,20 +87,26 @@ const setPortfolioFromDatabase = () => {
 
         let formattedPortfolio = [];
 
-        firestoreOperations.getPortfolio().then( (data) => {
-            data.forEach((doc) => {
-                formattedPortfolio.push(doc.data())
+        let user = getState().financials.user
+        if (user) {    
+            firestoreOperations.getPortfolio(user.email).then((doc) => {
+                if (doc.exists) {
+                    let data = doc.data()
+
+                    each(Object.keys(data), (key, index) => {
+                        formattedPortfolio.push(data[key]);
+                    });
+
+                    dispatch(actions.setPortfolioFromDatabase(formattedPortfolio));
+                }
             });
-            dispatch(actions.setPortfolioFromDatabase(formattedPortfolio));
-        });
+        }
     }
 }
 
 const getMarketMovers = count => {        
     return (dispatch, getState) => {
-        callYahooApiMarket(yahooConstants.urls.getMarketMovers(), count).then((response) => {
-            console.log('response')
-            console.log(response)
+        getYahooMarketMovers(count).then((response) => {
             dispatch(actions.setMarketMovers(response));
         })
     }
@@ -88,6 +114,7 @@ const getMarketMovers = count => {
 
 
 export default {
+    setUserFromAuth,
     getAndSetResearchCompany,
     addToWatchList,
     setWatchListFromDatabase,

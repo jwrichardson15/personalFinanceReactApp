@@ -4,7 +4,7 @@
 }
 
 .mainToolbar {
-  background-color: #20232a;
+  background-color: #292F33;
 }
 
 .toolbar-user {
@@ -137,7 +137,7 @@
 .rightSideGrid-watchList-header {
   line-height: 52px;
   text-align: center;
-  background-color: #20232a !important;
+  background-color: #292F33 !important;
   color: white !important;
   height: 52px;
 }
@@ -243,4 +243,8 @@
   border-width: 1px;
   border-style: solid;
   border-color: black;
+}
+
+.timeline-Widget {
+  border-radius: 0px !important;
 }

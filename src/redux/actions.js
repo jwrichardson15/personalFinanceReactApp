@@ -1,5 +1,10 @@
 import TYPES from "./actionTypes";
 
+export const setUser = user => ({
+  type: TYPES.SET_USER,
+  payload: user
+})
+
 export const setResearchCompany = companyInfo => ({
   type: TYPES.SET_RESEARCH_COMPANY,
   payload: companyInfo
@@ -36,5 +41,6 @@ export default {
   setWatchlistFromDatabase,
   setPortfolioFromDatabase,
   removeCompanyFromWatchList,
-  setMarketMovers
+  setMarketMovers,
+  setUser
 }

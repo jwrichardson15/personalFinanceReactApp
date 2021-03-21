@@ -73,7 +73,7 @@ class CompanyFinancials extends React.Component {
             <TableContainer className="financialSummaryTable">
               <Table aria-label="simple table">
                 <TableBody>
-                    <TableRow style={{backgroundColor: '#20232a'}}>
+                    <TableRow style={{backgroundColor: '#292F33'}}>
                       <TableCell align="left" style={{color: '#ffffff', fontWeight: '500'}}>Price Targets</TableCell>
                       <TableCell align="right" style={{color: '#ffffff'}}></TableCell>
                       <TableCell align="left" style={{color: '#ffffff'}}></TableCell>
@@ -103,7 +103,7 @@ class CompanyFinancials extends React.Component {
             <div className="generalGrid-container">
               <TableContainer className="financialSummaryTable">
                 <Table aria-label="simple table">
-                    <TableRow style={{backgroundColor: '#20232a'}}>
+                    <TableRow style={{backgroundColor: '#292F33'}}>
                         <TableCell align="left" style={{color: '#ffffff', fontWeight: '500'}}>Summary</TableCell>
                         <TableCell align="right" style={{color: '#ffffff'}}></TableCell>
                         <TableCell align="left" style={{color: '#ffffff'}}></TableCell>
@@ -151,7 +151,7 @@ class CompanyFinancials extends React.Component {
             <TableContainer className="financialSummaryTable">
               <Table aria-label="simple table">
                 <TableBody>
-                    <TableRow style={{backgroundColor: '#20232a'}}>
+                    <TableRow style={{backgroundColor: '#292F33'}}>
                       <TableCell align="left" style={{color: '#ffffff', fontWeight: '500'}}>Key Metrics</TableCell>
                       <TableCell align="right" style={{color: '#ffffff'}}></TableCell>
                       <TableCell align="left" style={{color: '#ffffff'}}></TableCell>
